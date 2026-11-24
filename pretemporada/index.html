@@ -285,7 +285,7 @@ h2{
       </div>
       <div class="dato">
         <svg viewBox="0 0 24 24" fill="none" stroke="#A06D23" stroke-width="1.6" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg>
-        Lun · Mié · Vie<br>18:30 a 20
+        Lun · Mié · Vie<br>6:30 o 18:30
       </div>
       <div class="dato">
         <svg viewBox="0 0 24 24" fill="none" stroke="#A06D23" stroke-width="1.6" aria-hidden="true"><circle cx="9" cy="8" r="3.2"/><path d="M3.5 19c0-3 2.5-5 5.5-5s5.5 2 5.5 5"/><path d="M16 6.2a3 3 0 0 1 0 5.6M17.5 14.4c2 .7 3.2 2.4 3.2 4.6"/></svg>
@@ -391,10 +391,11 @@ h2{
     <p class="sec-kicker">Bueno saber</p>
     <h2>Cómo funciona</h2>
     <ul class="cond">
-      <li>Cupo de 12 personas por grupo.</li>
+      <li><b>Dos turnos, los mismos días:</b> mañana de 6:30 a 8:00 y tarde de 18:30 a 20:00. Cupo de 12 personas por turno.</li>
+      <li>El turno mañana se abre con un mínimo de 6 inscriptos. Si no se llega, te pasamos a la tarde.</li>
       <li>La pretemporada se hace con los inscriptos que haya: <b>si te anotás, se hace.</b></li>
       <li>El primer día es el test inicial y ya cuenta como entrenamiento.</li>
-      <li><b>Las sesiones son fijas y no se recuperan.</b> Antes de anotarte, fijate que puedas venir los lunes, miércoles y viernes.</li>
+      <li><b>Si no podés venir a tu turno, recuperás en el otro</b>, el mismo día, avisando antes y si hay lugar. Si no, la sesión no se recupera.</li>
       <li>Al inscribirte te pregunto por lesiones y salud. Sirve para cuidarte en los tests y en las cargas.</li>
       <li>Traé ropa deportiva, zapatillas y mucha agua: es enero en Asunción.</li>
     </ul>
@@ -442,6 +443,14 @@ h2{
           <label class="op"><input type="radio" name="posicion" value="Drive"> Drive</label>
           <label class="op"><input type="radio" name="posicion" value="Revés"> Revés</label>
           <label class="op"><input type="radio" name="posicion" value="Los dos"> Los dos</label>
+        </div>
+      </fieldset>
+
+      <fieldset>
+        <legend>¿Qué turno?</legend>
+        <div class="ops">
+          <label class="op"><input type="radio" name="turno" value="Mañana" required> Mañana 6:30</label>
+          <label class="op"><input type="radio" name="turno" value="Tarde"> Tarde 18:30</label>
         </div>
       </fieldset>
 
@@ -507,7 +516,7 @@ h2{
   const listo = document.getElementById("listo");
 
   function mensajeWA(d){
-    const base = "Hola Lucho, me inscribí a la Pretemporada 2027 (" + d.producto + "). Soy " + d.nombre +
+    const base = "Hola Lucho, me inscribí a la Pretemporada 2027 (" + d.producto + ", turno " + (d.turno || "").toLowerCase() + "). Soy " + d.nombre +
                  ". ¿Me pasás los datos para pagar?";
     if (ENDPOINT) return base;
     return base +
